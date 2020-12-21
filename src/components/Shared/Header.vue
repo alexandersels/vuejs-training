@@ -1,25 +1,25 @@
 <template>
   <div class="header">
     <div class="header__wrapper">
-      <a href="#" class="logo" title="Stock Management">
+      <a href="/" class="logo" title="Stock Management">
         <img>
       </a>
       <div class="header__content">
         <div class="header__links">
           <div class="header__link">
-            <a href="/">Sheets</a>
+            <router-link to="/sheets">Sheets</router-link>
           </div>
           <div class="header__link">
-            <a href="/">Units</a>
+            <router-link to="/units">Units</router-link>
           </div>
           <div class="header__link">
-            <a href="/">Orders</a>
+            <router-link to="/orders">Orders</router-link>
           </div>
           <div class="header__link">
-            <a href="/">Users</a>
+            <router-link to="/users">Users</router-link>
           </div>
           <div class="header__link">
-            <a href="/">Login</a>
+            <router-link to="/login">Login</router-link>
           </div>
         </div>
       </div>
@@ -72,7 +72,7 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
-  height: 8rem;
+  height: 70px;
   padding: 0 1rem;
 
   font-size: 1.8rem;

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <PageTitle title="Sheets Overview"></PageTitle>
+    <PageTitle title="Users Overview"></PageTitle>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur culpa earum harum ipsum obcaecati rem sequi
       voluptas voluptatibus? Accusantium alias cum earum fugit hic illo, iusto neque quod sed sit! Lorem ipsum dolor sit
       amet, consectetur adipisicing elit. Accusantium architecto consequuntur delectus laboriosam laborum magni nobis,
@@ -13,7 +13,7 @@
 import PageTitle from "@/components/Shared/PageTitle";
 
 export default {
-  name: 'Sheets',
+  name: 'Users',
   components: {PageTitle}
 }
 </script>
