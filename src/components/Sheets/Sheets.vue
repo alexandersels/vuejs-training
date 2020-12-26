@@ -98,7 +98,7 @@ export default {
   },
   mounted() {
     axios
-        .get('http://localhost:5001/apî/sheets')
+        .get('https://localhost:5001/api/sheets')
         .then(response => this.sheets = response);
   }
 }
