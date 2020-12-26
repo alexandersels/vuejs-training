@@ -15,7 +15,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="entry in users" :key="entry.id" @click="onRowSelected(entry.Id)">
+        <tr v-for="entry in users" :key="entry.id" @click="onRowSelected(entry.id)">
           <td>{{ entry.firstName }}</td>
           <td>{{ entry.lastName }}</td>
           <td>{{ entry.line }}</td>
