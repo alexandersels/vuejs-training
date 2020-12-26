@@ -3,17 +3,28 @@
     <PageTitle title="Register a new user"></PageTitle>
     <form class="form">
       <div class="row">
-        <input v-model=formData.firstname name="firstname" class="form__field" required placeholder="Firstname">
+        <input v-model=formData.FirstName name="firstname" class="form__field" required placeholder="Firstname">
       </div>
       <div class="row">
-        <input v-model=formData.lastname name="lastname" class="form__field" required placeholder="Lastname">
+        <input v-model=formData.LastName name="lastname" class="form__field" required placeholder="Lastname">
       </div>
       <div class="row">
-        <input v-model=formData.email name="email" class="form__field" required placeholder="Email">
+        <input v-model=formData.Email type="email" name="email" class="form__field" required placeholder="Email">
       </div>
       <div class="row">
-        <input v-model=formData.password name="password" type="password" class="form__field" required
+        <input v-model=formData.Line name="line" class="form__field" required placeholder="Line">
+      </div>
+      <div class="row">
+        <input v-model=formData.PersonalNumber name="personal number" class="form__field" required
+               placeholder="Personal Number">
+      </div>
+      <div class="row">
+        <input v-model=formData.Password name="password" type="password" class="form__field" required
                placeholder="Password">
+      </div>
+      <div class="row">
+        <input v-model=formData.ConfirmPassword name="password" type="password" class="form__field" required
+               placeholder="Confirm Password">
       </div>
     </form>
     <div class="row">
@@ -25,6 +36,7 @@
 <script>
 import PageTitle from "@/components/Shared/PageTitle";
 import PrimaryButton from "@/components/Shared/PrimaryButton";
+import * as axios from "axios";
 
 export default {
   name: "Create-User",
@@ -32,20 +44,22 @@ export default {
   data() {
     return {
       formData: {
-        firstname: undefined,
-        lastname: undefined,
-        email: undefined,
-        password: undefined,
+        FirstName: undefined,
+        LastName: undefined,
+        Email: undefined,
+        Password: undefined,
+        ConfirmPassword: undefined,
+        Line: undefined,
+        PersonalNumber: undefined,
       }
     }
   },
   methods: {
     onRegisterClicked() {
       const user = JSON.parse(JSON.stringify(this.formData));
-      console.log(user);
-      // axios post
-      // on success route to home
-      this.$router.push('/');
+      axios
+          .post('http://localhost:5001/users', user)
+          .then(() => this.$router.push('/'));
     }
   }
 }

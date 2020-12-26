@@ -28,6 +28,7 @@
 </template>
 <script>
 import PageTitle from "@/components/Shared/PageTitle";
+import * as axios from "axios";
 
 export default {
   name: 'Users',
@@ -89,6 +90,13 @@ export default {
       this.$router.push('/users/create');
     }
   },
+  mounted() {
+    axios
+        .get('http://localhost:5001/users')
+        .then(response => {
+          console.log(response);
+        });
+  }
 }
 </script>
 
