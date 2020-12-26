@@ -1,5 +1,7 @@
 <template>
-  <div class="container"></div>
+  <div class="container">
+    <PageTitle title="Users Detail"></PageTitle>
+  </div>
 </template>
 
 <script>

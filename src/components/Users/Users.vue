@@ -1,6 +1,12 @@
 <template>
   <div class="container">
     <PageTitle title="Users Overview"></PageTitle>
+    <div class="operations">
+      <button class="add" @click="onCreateClicked()">
+        <font-awesome-icon icon="plus-square"/>
+        Register User
+      </button>
+    </div>
     <div class="table-wrapper">
       <table>
         <thead>
@@ -82,7 +88,7 @@ export default {
       this.$router.push(`/users/${id}`);
     },
     onCreateClicked() {
-      this.$router.push('/users/create');
+      this.$router.push('/register');
     }
   },
   mounted() {
@@ -159,6 +165,24 @@ th.active .arrow {
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 4px solid #fff;
+}
+
+.operations {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-top: 5rem;
+  margin-bottom: 1rem;
+}
+
+.add {
+  padding: .5rem 2rem;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: #007bff;
+  border: 2px solid #03478C;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
 </style>
