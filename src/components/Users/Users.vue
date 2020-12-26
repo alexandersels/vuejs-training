@@ -92,7 +92,7 @@ export default {
   },
   mounted() {
     axios
-        .get('http://localhost:5001/users')
+        .get('http://localhost:5001/api/users')
         .then(response => {
           console.log(response);
         });

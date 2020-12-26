@@ -58,7 +58,7 @@ export default {
     onRegisterClicked() {
       const user = JSON.parse(JSON.stringify(this.formData));
       axios
-          .post('http://localhost:5001/users', user)
+          .post('http://localhost:5001/api/users', user)
           .then(() => this.$router.push('/'));
     }
   }
