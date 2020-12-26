@@ -89,6 +89,4 @@ export default {
   border-color: #007bff !important;
   box-shadow: 0 0 5px #007bff;
 }
-
-
 </style>
