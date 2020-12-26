@@ -9,6 +9,7 @@ import CreateUser from "@/components/Users/Create-User";
 import Units from "@/components/Units/Units";
 import Login from "@/components/Authentication/Login";
 import Logout from "@/components/Authentication/Logout";
+import Users from "@/components/Users/Users";
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,7 @@ const routes = [
     {path: '/register', component: CreateUser},
     {path: '/login', component: Login},
     {path: '/logout', component: Logout},
+    {path: '/users', component: Users},
     {path: '/', component: Home},
 ]
 

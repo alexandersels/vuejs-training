@@ -18,8 +18,8 @@
         <tr v-for="entry in users" :key="entry.Id" @click="onRowSelected(entry.Id)">
           <td>{{ entry.Firstname }}</td>
           <td>{{ entry.Lastname }}</td>
-          <td>{{ entry.Role }}</td>
-          <td>{{ entry.CreationDate }}</td>
+          <td>{{ entry.Line }}</td>
+          <td>{{ entry.PersonalNumber }}</td>
         </tr>
         </tbody>
       </table>
@@ -37,13 +37,8 @@ export default {
     return {
       sortKey: '',
       sortOrder: false, // false == desc
-      columns: ['Firstname', 'Lastname', 'Role', 'Creation Date'],
-      users: [
-        {Id: '1', Firstname: 'Fuck', Lastname: 'Face', Role: 'ADMIN', CreationDate: new Date().toISOString()},
-        {Id: '2', Firstname: 'Fuck', Lastname: 'Facial', Role: 'READ', CreationDate: new Date().toISOString()},
-        {Id: '3', Firstname: 'Fuck', Lastname: 'Fenis', Role: 'READ', CreationDate: new Date().toISOString()},
-        {Id: '4', Firstname: 'Fuck', Lastname: 'Farts', Role: 'READ', CreationDate: new Date().toISOString()},
-      ],
+      columns: ['Personal Number', 'Lastname', 'Firstname', 'Line'],
+      users: [],
     }
   },
   methods: {
@@ -75,10 +70,10 @@ export default {
           return user.Firstname;
         case "Lastname":
           return user.Lastname;
-        case "Role":
-          return user.Role;
-        case "Creation Date":
-          return user.CreationDate;
+        case "Personal Number":
+          return user.PersonalNumber;
+        case "Line":
+          return user.Line;
         default:
           return "";
       }
