@@ -3,7 +3,7 @@
     <PageTitle title="Login"></PageTitle>
     <form class="form">
       <div class="row">
-        <input v-model=formData.email name="email" class="form__field" required placeholder="Email">
+        <input v-model=formData.personalNumber name="personalNumber" class="form__field" required placeholder="Personal Number">
       </div>
       <div class="row">
         <input v-model=formData.password type=password name="password" class="form__field" required
