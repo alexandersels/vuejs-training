@@ -6,7 +6,8 @@
         <input v-model=formData.email name="email" class="form__field" required placeholder="Email">
       </div>
       <div class="row">
-        <input v-model=formData.password type=password name="password" class="form__field" required placeholder="Password">
+        <input v-model=formData.password type=password name="password" class="form__field" required
+               placeholder="Password">
       </div>
     </form>
     <div class="row">
@@ -35,6 +36,8 @@ export default {
       const user = JSON.parse(JSON.stringify(this.formData));
       console.log(user);
       // axios post
+      // on success route to home
+      this.$router.push('/');
     }
   }
 }

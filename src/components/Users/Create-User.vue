@@ -44,6 +44,8 @@ export default {
       const user = JSON.parse(JSON.stringify(this.formData));
       console.log(user);
       // axios post
+      // on success route to home
+      this.$router.push('/');
     }
   }
 }
