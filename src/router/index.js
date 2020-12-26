@@ -10,6 +10,7 @@ import Units from "@/components/Units/Units";
 import Login from "@/components/Authentication/Login";
 import Logout from "@/components/Authentication/Logout";
 import Users from "@/components/Users/Users";
+import DetailUser from "@/components/Users/Detail-User";
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,7 @@ const routes = [
     {path: '/login', component: Login},
     {path: '/logout', component: Logout},
     {path: '/users', component: Users},
+    {path: '/users/:id', component: DetailUser},
     {path: '/', component: Home},
 ]
 

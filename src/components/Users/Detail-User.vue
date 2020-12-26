@@ -7,6 +7,9 @@ import * as axios from "axios";
 
 export default {
   name: "Detail-User",
+  data() {
+    return {}
+  },
   mounted() {
     const userId = this.$route.params.id;
     console.log(userId);
