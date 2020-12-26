@@ -76,15 +76,15 @@ export default {
     findSortValue(sheet) {
       switch (this.sortKey) {
         case "Name":
-          return sheet.Name;
+          return sheet.name;
         case "Part Number":
-          return sheet.PartNumber;
+          return sheet.partNumber;
         case "Max Stock":
-          return sheet.MaxStock;
+          return sheet.maxStock;
         case "Current Stock":
-          return sheet.CurrentStock;
+          return sheet.currentStock;
         case "Location":
-          return sheet.Location;
+          return sheet.location;
         default:
           return "";
       }
