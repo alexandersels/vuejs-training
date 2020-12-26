@@ -19,7 +19,13 @@
             <router-link to="/users">Users</router-link>
           </div>
           <div class="header__link">
+            <router-link to="/register">Register</router-link>
+          </div>
+          <div class="header__link">
             <router-link to="/login">Login</router-link>
+          </div>
+          <div class="header__link">
+            <router-link to="/logout">Logout</router-link>
           </div>
         </div>
       </div>

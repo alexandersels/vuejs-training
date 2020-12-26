@@ -3,43 +3,25 @@ import VueRouter from 'vue-router'
 import Home from "@/components/Home/Home";
 import Sheets from "@/components/Sheets/Sheets";
 import CreateSheet from "@/components/Sheets/Create-Sheet";
+import DetailSheet from "@/components/Sheets/Detail-Sheet";
 import Orders from "@/components/Orders/Orders";
-import Users from "@/components/Users/Users";
+import CreateUser from "@/components/Users/Create-User";
 import Units from "@/components/Units/Units";
+import Login from "@/components/Authentication/Login";
+import Logout from "@/components/Authentication/Logout";
 
 Vue.use(VueRouter)
 
 const routes = [
-    {
-        path: '/sheets/create',
-        name: 'Create Sheet',
-        component: CreateSheet,
-    },
-    {
-        path: '/sheets',
-        name: 'Sheets',
-        component: Sheets,
-    },
-    {
-        path: '/orders',
-        name: 'Orders',
-        component: Orders,
-    },
-    {
-        path: '/units',
-        name: 'Units',
-        component: Units,
-    },
-    {
-        path: '/users',
-        name: 'Users',
-        component: Users,
-    },
-    {
-        path: '/',
-        name: 'Home',
-        component: Home
-    },
+    {path: '/sheets/create', component: CreateSheet},
+    {path: '/sheets/:id', component: DetailSheet},
+    {path: '/sheets', component: Sheets},
+    {path: '/orders', component: Orders},
+    {path: '/units', component: Units},
+    {path: '/register', component: CreateUser},
+    {path: '/login', component: Login},
+    {path: '/logout', component: Logout},
+    {path: '/', component: Home},
 ]
 
 const router = new VueRouter({

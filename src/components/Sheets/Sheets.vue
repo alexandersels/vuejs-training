@@ -21,7 +21,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="entry in sheets" :key="entry.name" @click="onRowSelected(entry.Name)">
+        <tr v-for="entry in sheets" :key="entry.name" @click="onRowSelected(entry.Id)">
           <td>{{ entry.PartNumber }}</td>
           <td>{{ entry.Name }}</td>
           <td>{{ entry.MaxStock }}</td>
@@ -47,10 +47,10 @@ export default {
       sortOrder: false, // false == desc
       columns: ['Part Number', 'Name', 'Max Stock', 'Current Stock', 'Location'],
       sheets: [
-        {Name: 'Part One', PartNumber: '1111', MaxStock: 100, CurrentStock: 50, Location: 'Hanger One'},
-        {Name: 'Part Two', PartNumber: '2222', MaxStock: 200, CurrentStock: 100, Location: 'Hanger Two'},
-        {Name: 'Part Three', PartNumber: '3333', MaxStock: 300, CurrentStock: 150, Location: 'Hanger Three'},
-        {Name: 'Part Four', PartNumber: '4444', MaxStock: 400, CurrentStock: 200, Location: 'Hanger Four'},
+        {Id: '1', Name: 'Part One', PartNumber: '1111', MaxStock: 100, CurrentStock: 50, Location: 'Hanger One'},
+        {Id: '2', Name: 'Part Two', PartNumber: '2222', MaxStock: 200, CurrentStock: 100, Location: 'Hanger Two'},
+        {Id: '3', Name: 'Part Three', PartNumber: '3333', MaxStock: 300, CurrentStock: 150, Location: 'Hanger Three'},
+        {Id: '4', Name: 'Part Four', PartNumber: '4444', MaxStock: 400, CurrentStock: 200, Location: 'Hanger Four'},
       ],
       axios: null,
     }
@@ -95,7 +95,7 @@ export default {
       }
     },
     onRowSelected(id) {
-      console.log(id);
+      this.$router.push(`/sheets/${id}`);
     },
     onCreateClicked() {
       this.$router.push('/sheets/create');
