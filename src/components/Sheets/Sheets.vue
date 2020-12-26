@@ -22,11 +22,11 @@
         </thead>
         <tbody>
         <tr v-for="entry in sheets" :key="entry.name" @click="onRowSelected(entry.Id)">
-          <td>{{ entry.PartNumber }}</td>
-          <td>{{ entry.Name }}</td>
-          <td>{{ entry.MaxStock }}</td>
-          <td>{{ entry.CurrentStock }}</td>
-          <td>{{ entry.Location }}</td>
+          <td>{{ entry.partNumber }}</td>
+          <td>{{ entry.name }}</td>
+          <td>{{ entry.maxStock }}</td>
+          <td>{{ entry.currentStock }}</td>
+          <td>{{ entry.location }}</td>
         </tr>
         </tbody>
       </table>
@@ -99,7 +99,7 @@ export default {
   mounted() {
     axios
         .get('https://localhost:5002/api/sheets')
-        .then(response => this.sheets = response);
+        .then(response => this.sheets = response.data);
   }
 }
 </script>
