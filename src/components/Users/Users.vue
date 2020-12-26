@@ -15,11 +15,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="entry in users" :key="entry.Id" @click="onRowSelected(entry.Id)">
-          <td>{{ entry.FirstName }}</td>
-          <td>{{ entry.LastName }}</td>
-          <td>{{ entry.Line }}</td>
-          <td>{{ entry.PersonalNumber }}</td>
+        <tr v-for="entry in users" :key="entry.id" @click="onRowSelected(entry.Id)">
+          <td>{{ entry.firstName }}</td>
+          <td>{{ entry.lastName }}</td>
+          <td>{{ entry.line }}</td>
+          <td>{{ entry.personalNumber }}</td>
         </tr>
         </tbody>
       </table>
@@ -67,13 +67,13 @@ export default {
     findSortValue(user) {
       switch (this.sortKey) {
         case "Firstname":
-          return user.Firstname;
+          return user.firstname;
         case "Lastname":
-          return user.Lastname;
+          return user.lastname;
         case "Personal Number":
-          return user.PersonalNumber;
+          return user.personalNumber;
         case "Line":
-          return user.Line;
+          return user.line;
         default:
           return "";
       }
