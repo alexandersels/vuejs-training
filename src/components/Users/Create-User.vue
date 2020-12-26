@@ -63,7 +63,7 @@ export default {
             lastname: user.lastname,
           })
           .then(() => this.$router.push('/'))
-          .errors(error => console.log(error));
+          .catch(error => console.log(error));
     }
   }
 }
