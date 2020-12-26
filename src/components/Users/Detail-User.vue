@@ -6,9 +6,11 @@
 
 <script>
 import * as axios from "axios";
+import PageTitle from "@/components/Shared/PageTitle";
 
 export default {
   name: "Detail-User",
+  components: {PageTitle},
   data() {
     return {}
   },

@@ -19,6 +19,7 @@
 <script>
 import PrimaryButton from "@/components/Shared/PrimaryButton";
 import PageTitle from "@/components/Shared/PageTitle";
+import * as axios from "axios";
 
 export default {
   name: "Login",
@@ -26,18 +27,23 @@ export default {
   data() {
     return {
       formData: {
-        email: undefined,
+        personalNumber: undefined,
         password: undefined,
       }
     }
   },
   methods: {
     onLoginClicked() {
-      const user = JSON.parse(JSON.stringify(this.formData));
-      console.log(user);
-      // axios post
-      // on success route to home
-      this.$router.push('/');
+      const formData = JSON.parse(JSON.stringify(this.formData));
+      axios
+          .post('https://localhost:5001/api/users/login', {
+            ...formData
+          })
+          .then(response => {
+            console.log(response.data);
+            this.$router.push('/');
+          })
+          .catch(error => console.log(error));
     }
   }
 }
