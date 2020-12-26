@@ -16,8 +16,8 @@
         </thead>
         <tbody>
         <tr v-for="entry in users" :key="entry.Id" @click="onRowSelected(entry.Id)">
-          <td>{{ entry.Firstname }}</td>
-          <td>{{ entry.Lastname }}</td>
+          <td>{{ entry.FirstName }}</td>
+          <td>{{ entry.LastName }}</td>
           <td>{{ entry.Line }}</td>
           <td>{{ entry.PersonalNumber }}</td>
         </tr>
@@ -88,9 +88,7 @@ export default {
   mounted() {
     axios
         .get('https://localhost:5001/api/users')
-        .then(response => {
-          console.log(response);
-        });
+        .then(response => this.users = response.data);
   }
 }
 </script>
