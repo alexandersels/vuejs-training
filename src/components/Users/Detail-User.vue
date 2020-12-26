@@ -14,7 +14,7 @@ export default {
     const userId = this.$route.params.id;
     console.log(userId);
     axios
-        .get(`https://localhost/5001/api/users/${userId}`)
+        .get(`https://localhost:5001/api/users/${userId}`)
         .then(response => console.log(response))
   }
 }
