@@ -46,12 +46,7 @@ export default {
       sortKey: '',
       sortOrder: false, // false == desc
       columns: ['Part Number', 'Name', 'Max Stock', 'Current Stock', 'Location'],
-      sheets: [
-        {Id: '1', Name: 'Part One', PartNumber: '1111', MaxStock: 100, CurrentStock: 50, Location: 'Hanger One'},
-        {Id: '2', Name: 'Part Two', PartNumber: '2222', MaxStock: 200, CurrentStock: 100, Location: 'Hanger Two'},
-        {Id: '3', Name: 'Part Three', PartNumber: '3333', MaxStock: 300, CurrentStock: 150, Location: 'Hanger Three'},
-        {Id: '4', Name: 'Part Four', PartNumber: '4444', MaxStock: 400, CurrentStock: 200, Location: 'Hanger Four'},
-      ],
+      sheets: [],
       axios: null,
     }
   },
@@ -103,8 +98,8 @@ export default {
   },
   mounted() {
     axios
-        .get('http://localhost:8400/sheets')
-        .then(response => this.axios = response);
+        .get('http://localhost:5001/apî/sheets')
+        .then(response => this.sheets = response);
   }
 }
 </script>
