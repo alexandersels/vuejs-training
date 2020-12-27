@@ -15,7 +15,7 @@
           <div class="header__link">
             <router-link to="/orders">Orders</router-link>
           </div>
-          <div class="header__link">
+          <div class="header__link" v-if="this.$root.user && this.$root.user.role === 'admin'">
             <router-link to="/users">Users</router-link>
           </div>
           <div class="header__link">
