@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" v-if="user">
     <PageTitle title="Edit"></PageTitle>
     <form class="form">
       <div class="row">
