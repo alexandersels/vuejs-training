@@ -38,19 +38,27 @@
         <label>{{ user.role }}</label>
       </div>
     </section>
+    <PrimaryButton text="Edit" :clicked=onEditClicked></PrimaryButton>
   </div>
 </template>
 
 <script>
 import * as axios from "axios";
 import PageTitle from "@/components/Shared/PageTitle";
+import PrimaryButton from "@/components/Shared/PrimaryButton";
 
 export default {
   name: "Detail-User",
-  components: {PageTitle},
+  components: {PageTitle, PrimaryButton},
   data() {
     return {
       user: undefined,
+    }
+  },
+  methods: {
+    onEditClicked() {
+      const userId = this.$route.params.id;
+      this.$router.push(`/users/${userId}/edit`)
     }
   },
   mounted() {
