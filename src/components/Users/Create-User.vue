@@ -71,7 +71,6 @@ export default {
   methods: {
     onRegisterClicked() {
       const user = JSON.parse(JSON.stringify(this.formData));
-      console.log(user);
       axios
           .post('https://localhost:5001/api/users/register', {
             ...user
