@@ -42,7 +42,9 @@ export default {
             ...formData
           })
           .then(response => {
-            state.token = response.data.token;
+            const {token, userDetails} = response.data;
+            state.token = token;
+            state.user = userDetails;
             this.$router.push('/');
           })
           .catch(error => console.log(error));
