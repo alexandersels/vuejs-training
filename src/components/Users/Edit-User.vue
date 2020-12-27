@@ -50,10 +50,9 @@ export default {
   },
   methods: {
     onSaveClicked() {
-      const userId = this.$route.params.id;
       const user = JSON.parse(JSON.stringify(this.user));
       axios
-          .put(`https://localhost:5001/api/users/${userId}`, {
+          .put('https://localhost:5001/api/users', {
             ...user
           })
           .then(() => this.$router.push('/'))
