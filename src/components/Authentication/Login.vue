@@ -3,7 +3,8 @@
     <PageTitle title="Login"></PageTitle>
     <form class="form">
       <div class="row">
-        <input v-model=formData.personalNumber name="personalNumber" class="form__field" required placeholder="Personal Number">
+        <input v-model=formData.personalNumber name="personalNumber" class="form__field" required
+               placeholder="Personal Number">
       </div>
       <div class="row">
         <input v-model=formData.password type=password name="password" class="form__field" required
@@ -20,6 +21,7 @@
 import PrimaryButton from "@/components/Shared/PrimaryButton";
 import PageTitle from "@/components/Shared/PageTitle";
 import * as axios from "axios";
+import {state} from '@/components/Shared/state/variables'
 
 export default {
   name: "Login",
@@ -40,7 +42,7 @@ export default {
             ...formData
           })
           .then(response => {
-            console.log(response.data);
+            state.token = response.data.token;
             this.$router.push('/');
           })
           .catch(error => console.log(error));

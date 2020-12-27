@@ -12,10 +12,15 @@
 
 <script>
 import PageTitle from "@/components/Shared/PageTitle";
+import {state} from '@/components/Shared/state/variables'
 
 export default {
   name: 'Home',
-  components: {PageTitle}
+  components: {PageTitle},
+  mounted() {
+    console.log(state.token);
+    console.log(state.user);
+  }
 }
 </script>
 
