@@ -26,6 +26,7 @@
           <td>{{ entry.lastName }}</td>
           <td>{{ entry.line }}</td>
           <td>{{ entry.personalNumber }}</td>
+          <td>{{ entry.role }}</td>
         </tr>
         </tbody>
       </table>
@@ -43,7 +44,7 @@ export default {
     return {
       sortKey: '',
       sortOrder: false, // false == desc
-      columns: ['Personal Number', 'Lastname', 'Firstname', 'Line'],
+      columns: ['Personal Number', 'Lastname', 'Firstname', 'Line', 'Role'],
       users: [],
     }
   },
@@ -80,6 +81,8 @@ export default {
           return user.personalNumber;
         case "Line":
           return user.line;
+        case "Role":
+          return user.role;
         default:
           return "";
       }
