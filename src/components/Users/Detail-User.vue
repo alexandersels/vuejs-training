@@ -1,6 +1,20 @@
 <template>
   <div class="container">
     <PageTitle title="Users Detail"></PageTitle>
+    <label>Firstname</label>
+    <label>{{ user.firstName }}</label>
+    <label>Lastname</label>
+    <label>{{ user.lastName }}</label>
+    <label>Email</label>
+    <label>{{ user.email }}</label>
+    <label>Id</label>
+    <label>{{ user.id }}</label>
+    <label>Personal Number</label>
+    <label>{{ user.personalNumber }}</label>
+    <label>Line</label>
+    <label>{{ user.line }}</label>
+    <label>Role</label>
+    <label>{{ user.role }}</label>
   </div>
 </template>
 
@@ -12,14 +26,16 @@ export default {
   name: "Detail-User",
   components: {PageTitle},
   data() {
-    return {}
+    return {
+      user: undefined,
+    }
   },
   mounted() {
     const userId = this.$route.params.id;
     console.log(userId);
     axios
         .get(`https://localhost:5001/api/users/${userId}`)
-        .then(response => console.log(response))
+        .then(response => this.user = response.data)
   }
 }
 </script>
