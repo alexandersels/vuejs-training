@@ -52,7 +52,7 @@ export default {
     onSaveClicked() {
       const user = JSON.parse(JSON.stringify(this.user));
       axios
-          .put('https://localhost:5001/api/users/register', {
+          .put('https://localhost:5001/api/users', {
             ...user
           })
           .then(() => this.$router.push('/'))
