@@ -1,12 +1,35 @@
 <template>
   <div class="container">
     <PageTitle title="Units Overview"></PageTitle>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur culpa earum harum ipsum obcaecati rem sequi
-      voluptas voluptatibus? Accusantium alias cum earum fugit hic illo, iusto neque quod sed sit! Lorem ipsum dolor sit
-      amet, consectetur adipisicing elit. Accusantium architecto consequuntur delectus laboriosam laborum magni nobis,
-      numquam sequi similique veritatis! Cum dolores et in itaque magni natus odio quaerat tempore? Lorem ipsum dolor
-      sit amet, consectetur adipisicing elit. A ab aspernatur consequuntur cum doloremque et eum fugiat impedit in
-      laudantium libero nostrum porro possimus quia quibusdam soluta tempore voluptate, voluptatibus!</p>
+    <div class="operations">
+      <button class="add" @click="onCreateClicked()">
+        <font-awesome-icon icon="plus-square"/>
+        Create
+      </button>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+        <tr>
+          <th v-for="colName in columns"
+              :key="colName"
+              :class="{active: sortKey === colName}"
+              @click="headerClicked(colName)">
+            <span>{{ colName }}</span>
+            <span class="arrow" :class="sortKey === colName && sortOrder ? 'asc' : 'dsc'"></span>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="entry in units" :key="entry.name" @click="onRowSelected(entry.Id)">
+          <td>{{ entry.name }}</td>
+          <td>{{ entry.productNumber }}</td>
+          <td>{{ entry.type }}</td>
+          <td>{{ entry.line }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 <script>
@@ -14,7 +37,59 @@ import PageTitle from "@/components/Shared/PageTitle";
 
 export default {
   name: 'Units',
-  components: {PageTitle}
+  components: {PageTitle},
+  data() {
+    return {
+      sortKey: '',
+      sortOrder: false, // false == desc
+      columns: ['Name', 'Product Number', 'Type', 'Line'],
+      sheets: [],
+    }
+  },
+  methods: {
+    headerClicked(columnName) {
+      if (this.sortKey !== columnName) {
+        this.sortKey = columnName;
+        this.sortOrder = true;
+      } else {
+        this.sortOrder = !this.sortOrder;
+      }
+      this.sortData();
+    },
+    sortData() {
+      this.sheets = this.sheets.slice().sort((a, b) => {
+        a = this.findSortValue(a);
+        b = this.findSortValue(b);
+
+        let order = (a === b ? 0 : a > b ? 1 : -1);
+        if (this.sortOrder) {
+          return order;
+        } else {
+          return order * -1;
+        }
+      })
+    },
+    findSortValue(unit) {
+      switch (this.sortKey) {
+        case "Name":
+          return unit.name;
+        case "Product Number":
+          return unit.productNumber;
+        case "Type":
+          return unit.type;
+        case "Line":
+          return unit.line;
+        default:
+          return "";
+      }
+    },
+    onRowSelected(id) {
+      this.$router.push(`/units/${id}`);
+    },
+    onCreateClicked() {
+      this.$router.push('/units/create');
+    }
+  },
 }
 </script>
 
@@ -23,8 +98,84 @@ export default {
   margin-top: 10rem;
 }
 
+.table-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
 p {
   color: rgb(76, 77, 77);
   font-size: 16px;
+}
+
+table {
+  width: 100%;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+th {
+  background-color: #007bff;
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  user-select: none;
+}
+
+td {
+  background-color: #f9f9f9;
+}
+
+th,
+td {
+  min-width: 120px;
+  padding: 10px 20px;
+}
+
+tr {
+  cursor: pointer;
+}
+
+th.active .arrow {
+  opacity: 1;
+}
+
+.arrow {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  opacity: 0.66;
+}
+
+.arrow.asc {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid #fff;
+}
+
+.arrow.dsc {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #fff;
+}
+
+.operations {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding-top: 5rem;
+  margin-bottom: 1rem;
+}
+
+.add {
+  padding: .5rem 2rem;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: #007bff;
+  border: 2px solid #03478C;
+  cursor: pointer;
+  border-radius: 10px;
 }
 </style>

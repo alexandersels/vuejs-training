@@ -4,7 +4,7 @@
     <div class="operations">
       <button class="add" @click="onCreateClicked()">
         <font-awesome-icon icon="plus-square"/>
-        Create sheet
+        Create
       </button>
     </div>
     <div class="table-wrapper">
