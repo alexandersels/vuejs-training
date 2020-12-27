@@ -18,10 +18,10 @@
           <div class="header__link">
             <router-link to="/users">Users</router-link>
           </div>
-          <div class="header__link">
+          <div class="header__link" v-if="!loggedInUser">
             <router-link to="/login">Login</router-link>
           </div>
-          <div class="header__link">
+          <div class="header__link" v-if="loggedInUser">
             <router-link to="/logout">Logout</router-link>
           </div>
         </div>
@@ -31,8 +31,15 @@
 </template>
 
 <script>
+import {state} from '@/components/Shared/state/variables'
+
 export default {
-  name: 'Header'
+  name: 'Header',
+  data() {
+    return {
+      loggedInUser: state.user,
+    }
+  }
 }
 </script>
 
