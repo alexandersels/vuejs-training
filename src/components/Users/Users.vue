@@ -22,10 +22,10 @@
         </thead>
         <tbody>
         <tr v-for="entry in users" :key="entry.id" @click="onRowSelected(entry.id)">
-          <td>{{ entry.firstName }}</td>
-          <td>{{ entry.lastName }}</td>
-          <td>{{ entry.line }}</td>
           <td>{{ entry.personalNumber }}</td>
+          <td>{{ entry.lastName }}</td>
+          <td>{{ entry.firstName }}</td>
+          <td>{{ entry.line }}</td>
           <td>{{ entry.role }}</td>
         </tr>
         </tbody>
