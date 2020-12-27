@@ -3,27 +3,34 @@
     <PageTitle title="Register a new user"></PageTitle>
     <form class="form">
       <div class="row">
-        <input v-model=formData.FirstName name="firstname" class="form__field" required placeholder="Firstname">
+        <input v-model=formData.firstName name="firstname" class="form__field" required placeholder="Firstname">
       </div>
       <div class="row">
-        <input v-model=formData.LastName name="lastname" class="form__field" required placeholder="Lastname">
+        <input v-model=formData.lastName name="lastname" class="form__field" required placeholder="Lastname">
       </div>
       <div class="row">
-        <input v-model=formData.Email type="email" name="email" class="form__field" required placeholder="Email">
+        <input v-model=formData.email type="email" name="email" class="form__field" required placeholder="Email">
       </div>
       <div class="row">
-        <input v-model=formData.Line name="line" class="form__field" required placeholder="Line">
+        <input v-model=formData.line name="line" class="form__field" required placeholder="Line">
       </div>
       <div class="row">
-        <input v-model=formData.PersonalNumber name="personal number" class="form__field" required
+        <input v-model=formData.personalNumber name="personal number" class="form__field" required
                placeholder="Personal Number">
       </div>
       <div class="row">
-        <input v-model=formData.Password name="password" type="password" class="form__field" required
+        <select v-model=formData.role name="role" class="form__field" required>
+          <option v-for="option in options" v-bind:key="option.value" v-bind:value="option.value">
+            {{ option.text }}
+          </option>
+        </select>
+      </div>
+      <div class="row">
+        <input v-model=formData.password name="password" type="password" class="form__field" required
                placeholder="Password">
       </div>
       <div class="row">
-        <input v-model=formData.ConfirmPassword name="password" type="password" class="form__field" required
+        <input v-model=formData.confirmPassword name="password" type="password" class="form__field" required
                placeholder="Confirm Password">
       </div>
     </form>
@@ -43,20 +50,28 @@ export default {
   components: {PrimaryButton, PageTitle},
   data() {
     return {
+      options: [
+        {text: 'SCT', value: 'sct'},
+        {text: 'NSM', value: 'nsm'},
+        {text: 'Line', value: 'line'},
+        {text: 'Admin', value: 'admin'},
+      ],
       formData: {
-        FirstName: undefined,
-        LastName: undefined,
-        Email: undefined,
-        Password: undefined,
-        ConfirmPassword: undefined,
-        Line: undefined,
-        PersonalNumber: undefined,
+        firstName: undefined,
+        lastName: undefined,
+        email: undefined,
+        password: undefined,
+        confirmPassword: undefined,
+        line: undefined,
+        role: undefined,
+        personalNumber: undefined,
       }
     }
   },
   methods: {
     onRegisterClicked() {
       const user = JSON.parse(JSON.stringify(this.formData));
+      console.log(user);
       axios
           .post('https://localhost:5001/api/users/register', {
             ...user

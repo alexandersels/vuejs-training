@@ -16,7 +16,9 @@ Vue.config.productionTip = false
 new Vue({
     data: {
         token: undefined,
-        user: undefined,
+        user: {
+            role: 'admin'
+        },
     },
     router,
     render: h => h(App)
