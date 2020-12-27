@@ -10,15 +10,14 @@
 <script>
 import PrimaryButton from "@/components/Shared/PrimaryButton";
 import PageTitle from "@/components/Shared/PageTitle";
-import {state} from '@/components/Shared/state/variables'
 
 export default {
   name: "Logout",
   components: {PrimaryButton, PageTitle},
   methods: {
     onLogoutClicked() {
-      state.user = undefined;
-      state.token = undefined;
+      this.$root.user = undefined;
+      this.$root.token = undefined;
       this.$router.push('/');
     }
   }

@@ -21,7 +21,6 @@
 import PrimaryButton from "@/components/Shared/PrimaryButton";
 import PageTitle from "@/components/Shared/PageTitle";
 import * as axios from "axios";
-import {state} from '@/components/Shared/state/variables'
 
 export default {
   name: "Login",
@@ -37,14 +36,15 @@ export default {
   methods: {
     onLoginClicked() {
       const formData = JSON.parse(JSON.stringify(this.formData));
+      this.$router.push('/');
       axios
           .post('https://localhost:5001/api/users/login', {
             ...formData
           })
           .then(response => {
             const {token, userDetails} = response.data;
-            state.token = token;
-            state.user = userDetails;
+            this.$root.token = token;
+            this.$root.user = userDetails;
             this.$router.push('/');
           })
           .catch(error => console.log(error));

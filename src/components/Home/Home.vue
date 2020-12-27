@@ -16,6 +16,9 @@ import PageTitle from "@/components/Shared/PageTitle";
 export default {
   name: 'Home',
   components: {PageTitle},
+  mounted() {
+    console.log(this.$root.user)
+  }
 }
 </script>
 
