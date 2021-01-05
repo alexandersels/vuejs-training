@@ -5,8 +5,12 @@ import Sheets from "@/components/Sheets/Sheets";
 import CreateSheet from "@/components/Sheets/Create-Sheet";
 import DetailSheet from "@/components/Sheets/Detail-Sheet";
 import Orders from "@/components/Orders/Orders";
+import CreateOrder from "@/components/Orders/Create-Order";
+import DetailOrder from "@/components/Orders/Detail-Order";
 import CreateUser from "@/components/Users/Create-User";
 import Units from "@/components/Units/Units";
+import CreateUnit from "@/components/Units/Create-Units";
+import DetailUnit from "@/components/Units/Detail-Unit";
 import Login from "@/components/Authentication/Login";
 import Logout from "@/components/Authentication/Logout";
 import Users from "@/components/Users/Users";
@@ -19,7 +23,11 @@ const routes = [
     {path: '/sheets/create', component: CreateSheet},
     {path: '/sheets/:id', component: DetailSheet},
     {path: '/sheets', component: Sheets},
+    {path: '/orders/create', component: CreateOrder},
+    {path: '/orders/:id', component: DetailOrder},
     {path: '/orders', component: Orders},
+    {path: '/units/create', component: CreateUnit},
+    {path: '/units/:id', component: DetailUnit},
     {path: '/units', component: Units},
     {path: '/register', component: CreateUser},
     {path: '/login', component: Login},

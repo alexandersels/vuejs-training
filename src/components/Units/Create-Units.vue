@@ -6,36 +6,17 @@
         <input v-model=formData.name name="name" class="form__field" required placeholder="Name">
       </div>
       <div class="row">
-        <input v-model=formData.partNumber name="partNumber" class="form__field" required
-               placeholder="Part Number">
+        <input v-model=formData.productNumber name="productNumber" class="form__field" required
+               placeholder="Product Number">
       </div>
       <div class="row">
-        <input v-model=formData.length type="number" name="length" class="form__field" required
-               placeholder="Length">
+        <input v-model=formData.type name="type" class="form__field" required placeholder="Unit Type">
       </div>
       <div class="row">
-        <input v-model=formData.width type="number" name="width" class="form__field" required
-               placeholder="Width">
+        <input v-model=formData.line name="line" class="form__field" required placeholder="Line">
       </div>
       <div class="row">
-        <input v-model=formData.thickness type="number" name="thickness" class="form__field" required
-               placeholder="Thickness">
-      </div>
-      <div class="row">
-        <input v-model=formData.image name="image" class="form__field" required
-               placeholder="Image">
-      </div>
-      <div class="row">
-        <input v-model=formData.maxStock type="number" name="maxStock" class="form__field" required
-               placeholder="Max Stock">
-      </div>
-      <div class="row">
-        <input v-model=formData.currentStock type="number" name="currentStock" class="form__field" required
-               placeholder="Current Stock">
-      </div>
-      <div class="row">
-        <input v-model=formData.location name="location" class="form__field" required
-               placeholder="Location">
+        <input v-model=formData.image name="image" class="form__field" required placeholder="Link to image">
       </div>
     </form>
     <div class="row">
@@ -49,27 +30,23 @@ import PageTitle from "@/components/Shared/PageTitle";
 import PrimaryButton from "@/components/Shared/PrimaryButton";
 
 export default {
-  name: "Create-Sheets",
+  name: "Create-Units",
   components: {PrimaryButton, PageTitle},
   data() {
     return {
       formData: {
         name: undefined,
-        partNumber: undefined,
-        length: undefined,
-        width: undefined,
-        thickness: undefined,
+        productNumber: undefined,
+        type: undefined,
+        line: undefined,
         image: undefined,
-        maxStock: undefined,
-        currentStock: undefined,
-        location: undefined,
       }
     }
   },
   methods: {
     onRegisterClicked() {
-      const createSheetDto = JSON.parse(JSON.stringify(this.formData));
-      console.log(createSheetDto);
+      const createUnitDto = JSON.parse(JSON.stringify(this.formData));
+      console.log(createUnitDto);
       // axios
       //     .post('https://localhost:5001/api/users/register', {
       //       ...user
