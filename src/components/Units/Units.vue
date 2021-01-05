@@ -21,7 +21,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="entry in units" :key="entry.name" @click="onRowSelected(entry.Id)">
+        <tr v-for="entry in units" :key="entry.id" @click="onRowSelected(entry.id)">
           <td>{{ entry.name }}</td>
           <td>{{ entry.productNumber }}</td>
           <td>{{ entry.type }}</td>
@@ -34,6 +34,7 @@
 </template>
 <script>
 import PageTitle from "@/components/Shared/PageTitle";
+import * as axios from "axios";
 
 export default {
   name: 'Units',
@@ -43,7 +44,7 @@ export default {
       sortKey: '',
       sortOrder: false, // false == desc
       columns: ['Name', 'Product Number', 'Type', 'Line'],
-      sheets: [],
+      units: [],
     }
   },
   methods: {
@@ -57,7 +58,7 @@ export default {
       this.sortData();
     },
     sortData() {
-      this.sheets = this.sheets.slice().sort((a, b) => {
+      this.units = this.units.slice().sort((a, b) => {
         a = this.findSortValue(a);
         b = this.findSortValue(b);
 
@@ -90,6 +91,38 @@ export default {
       this.$router.push('/units/create');
     }
   },
+  mounted() {
+    axios
+        .get('https://localhost:5002/api/units')
+        .then(response => {
+          this.units = response.data
+        });
+    // Local testing
+    const demoUnits = [
+      {
+        id: '1',
+        name: 'Unit One',
+        productNumber: '123ABC',
+        type: 'Type One',
+        line: 'Line One',
+      },
+      {
+        id: '2',
+        name: 'Unit Two',
+        productNumber: '456DEF',
+        type: 'Type Two',
+        line: 'Line Two',
+      },
+      {
+        id: '3',
+        name: 'Unit Three',
+        productNumber: '789GHI',
+        type: 'Type Three',
+        line: 'Line Three',
+      }
+    ]
+    this.units = demoUnits;
+  }
 }
 </script>
 

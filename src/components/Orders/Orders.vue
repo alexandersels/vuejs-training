@@ -21,7 +21,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="entry in units" :key="entry.id" @click="onRowSelected(entry.Id)">
+        <tr v-for="entry in orders" :key="entry.id" @click="onRowSelected(entry.id)">
           <td>{{ entry.sequenceNumber }}</td>
           <td>{{ entry.date }}</td>
         </tr>
@@ -32,6 +32,7 @@
 </template>
 <script>
 import PageTitle from "@/components/Shared/PageTitle";
+import * as axios from "axios";
 
 export default {
   name: 'Orders',
@@ -41,7 +42,7 @@ export default {
       sortKey: '',
       sortOrder: false, // false == desc
       columns: ['Sequence Number', 'Date'],
-      sheets: [],
+      orders: [],
     }
   },
   methods: {
@@ -55,7 +56,7 @@ export default {
       this.sortData();
     },
     sortData() {
-      this.sheets = this.sheets.slice().sort((a, b) => {
+      this.orders = this.orders.slice().sort((a, b) => {
         a = this.findSortValue(a);
         b = this.findSortValue(b);
 
@@ -84,6 +85,24 @@ export default {
       this.$router.push('/orders/create');
     }
   },
+  mounted() {
+    axios
+        .get('https://localhost:5002/api/orders')
+        .then(response => this.orders = response.data);
+    const demoOrders = [
+      {
+        id: '1',
+        sequenceNumber: '123ABC',
+        date: new Date(),
+      },
+      {
+        id: '2',
+        sequenceNumber: '745ABC',
+        date: new Date(),
+      }
+    ]
+    this.orders = demoOrders;
+  }
 }
 </script>
 

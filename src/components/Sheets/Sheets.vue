@@ -21,7 +21,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="entry in sheets" :key="entry.name" @click="onRowSelected(entry.Id)">
+        <tr v-for="entry in sheets" :key="entry.id" @click="onRowSelected(entry.id)">
           <td>{{ entry.partNumber }}</td>
           <td>{{ entry.name }}</td>
           <td>{{ entry.maxStock }}</td>
@@ -93,13 +93,33 @@ export default {
       this.$router.push(`/sheets/${id}`);
     },
     onCreateClicked() {
-      this.$router.push('/sheets/create');
+      this.$router.push('/orders/create');
     }
   },
   mounted() {
     axios
         .get('https://localhost:5002/api/sheets')
         .then(response => this.sheets = response.data);
+
+    const demoSheets = [
+      {
+        id: '1',
+        partNumber: '132',
+        name: 'Part One',
+        maxStock: 10,
+        currentStock: 5,
+        location: 'Hanger One',
+      },
+      {
+        id: '2',
+        partNumber: '4561',
+        name: 'Part Two',
+        maxStock: 20,
+        currentStock: 4,
+        location: 'Hanger Two',
+      }
+    ]
+    this.sheets = demoSheets;
   }
 }
 </script>
