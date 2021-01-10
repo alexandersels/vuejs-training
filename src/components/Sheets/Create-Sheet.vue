@@ -77,6 +77,8 @@ export default {
             length: +createSheetDto.length,
             width: +createSheetDto.width,
             thickness: +createSheetDto.thickness,
+            currentStock: +createSheetDto.currentStock,
+            maxStock: +createSheetDto.maxStock,
           })
           .then(() => this.$router.push('/'))
           .catch(error => console.log(error));
