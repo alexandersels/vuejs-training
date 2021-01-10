@@ -46,7 +46,7 @@ export default {
   mounted() {
     const unitId = this.$route.params.id;
     axios
-        .get(`https://localhost:5001/api/units/${unitId}`)
+        .get(`https://localhost:5002/api/units/${unitId}`)
         .then(response => this.unit = response.data)
         .catch(() => {
           this.unit = {

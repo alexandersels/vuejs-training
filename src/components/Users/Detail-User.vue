@@ -64,7 +64,7 @@ export default {
   mounted() {
     const userId = this.$route.params.id;
     axios
-        .get(`https://localhost:5001/api/users/${userId}`)
+        .get(`https://localhost:5002/api/users/${userId}`)
         .then(response => this.user = response.data)
         .catch(() => {
           this.user = {
