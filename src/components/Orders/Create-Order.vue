@@ -16,6 +16,7 @@
 <script>
 import PageTitle from "@/components/Shared/PageTitle";
 import PrimaryButton from "@/components/Shared/PrimaryButton";
+import * as axios from "axios";
 
 export default {
   name: "Create-Order",
@@ -32,12 +33,12 @@ export default {
     onRegisterClicked() {
       const createOrderDto = JSON.parse(JSON.stringify(this.formData));
       console.log(createOrderDto)
-      // axios
-      //     .post('https://localhost:5001/api/users/register', {
-      //       ...user
-      //     })
-      //     .then(() => this.$router.push('/'))
-      //     .catch(error => console.log(error));
+      axios
+          .post('https://localhost:5001/api/orders/', {
+            ...createOrderDto
+          })
+          .then(() => this.$router.push('/'))
+          .catch(error => console.log(error));
     }
   }
 }

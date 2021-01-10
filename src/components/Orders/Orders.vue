@@ -88,20 +88,21 @@ export default {
   mounted() {
     axios
         .get('https://localhost:5002/api/orders')
-        .then(response => this.orders = response.data);
-    const demoOrders = [
-      {
-        id: '1',
-        sequenceNumber: '123ABC',
-        date: new Date(),
-      },
-      {
-        id: '2',
-        sequenceNumber: '745ABC',
-        date: new Date(),
-      }
-    ]
-    this.orders = demoOrders;
+        .then(response => this.orders = response.data)
+        .catch(() => {
+          this.orders = [
+            {
+              id: '1',
+              sequenceNumber: '123ABC',
+              date: new Date(),
+            },
+            {
+              id: '2',
+              sequenceNumber: '745ABC',
+              date: new Date(),
+            }
+          ]
+        });
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <PageTitle title="Create a new Unit"></PageTitle>
+    <PageTitle title="Create a new Sheet"></PageTitle>
     <form class="form">
       <div class="row">
         <input v-model=formData.name name="name" class="form__field" required placeholder="Name">
@@ -47,6 +47,7 @@
 <script>
 import PageTitle from "@/components/Shared/PageTitle";
 import PrimaryButton from "@/components/Shared/PrimaryButton";
+import * as axios from "axios";
 
 export default {
   name: "Create-Sheets",
@@ -70,12 +71,12 @@ export default {
     onRegisterClicked() {
       const createSheetDto = JSON.parse(JSON.stringify(this.formData));
       console.log(createSheetDto);
-      // axios
-      //     .post('https://localhost:5001/api/users/register', {
-      //       ...user
-      //     })
-      //     .then(() => this.$router.push('/'))
-      //     .catch(error => console.log(error));
+      axios
+          .post('https://localhost:5001/api/sheets/', {
+            ...createSheetDto
+          })
+          .then(() => this.$router.push('/'))
+          .catch(error => console.log(error));
     }
   }
 }

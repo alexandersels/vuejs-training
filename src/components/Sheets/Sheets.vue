@@ -99,27 +99,27 @@ export default {
   mounted() {
     axios
         .get('https://localhost:5002/api/sheets')
-        .then(response => this.sheets = response.data);
-
-    const demoSheets = [
-      {
-        id: '1',
-        partNumber: '132',
-        name: 'Part One',
-        maxStock: 10,
-        currentStock: 5,
-        location: 'Hanger One',
-      },
-      {
-        id: '2',
-        partNumber: '4561',
-        name: 'Part Two',
-        maxStock: 20,
-        currentStock: 4,
-        location: 'Hanger Two',
-      }
-    ]
-    this.sheets = demoSheets;
+        .then(response => this.sheets = response.data)
+        .catch(() => {
+          this.sheets = [
+            {
+              id: '1',
+              partNumber: '132',
+              name: 'Part One',
+              maxStock: 10,
+              currentStock: 5,
+              location: 'Hanger One',
+            },
+            {
+              id: '2',
+              partNumber: '4561',
+              name: 'Part Two',
+              maxStock: 20,
+              currentStock: 4,
+              location: 'Hanger Two',
+            }
+          ];
+        })
   }
 }
 </script>

@@ -94,34 +94,32 @@ export default {
   mounted() {
     axios
         .get('https://localhost:5002/api/units')
-        .then(response => {
-          this.units = response.data
-        });
-    // Local testing
-    const demoUnits = [
-      {
-        id: '1',
-        name: 'Unit One',
-        productNumber: '123ABC',
-        type: 'Type One',
-        line: 'Line One',
-      },
-      {
-        id: '2',
-        name: 'Unit Two',
-        productNumber: '456DEF',
-        type: 'Type Two',
-        line: 'Line Two',
-      },
-      {
-        id: '3',
-        name: 'Unit Three',
-        productNumber: '789GHI',
-        type: 'Type Three',
-        line: 'Line Three',
-      }
-    ]
-    this.units = demoUnits;
+        .then(response => this.units = response.data)
+        .catch(() => {
+          this.units = [
+            {
+              id: '1',
+              name: 'Unit One',
+              productNumber: '123ABC',
+              type: 'Type One',
+              line: 'Line One',
+            },
+            {
+              id: '2',
+              name: 'Unit Two',
+              productNumber: '456DEF',
+              type: 'Type Two',
+              line: 'Line Two',
+            },
+            {
+              id: '3',
+              name: 'Unit Three',
+              productNumber: '789GHI',
+              type: 'Type Three',
+              line: 'Line Three',
+            }
+          ]
+        })
   }
 }
 </script>
