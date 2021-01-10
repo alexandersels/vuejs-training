@@ -73,7 +73,10 @@ export default {
       console.log(createSheetDto);
       axios
           .post('https://localhost:5002/api/sheets/', {
-            ...createSheetDto
+            ...createSheetDto,
+            length: +createSheetDto.length,
+            width: +createSheetDto.width,
+            thickness: +createSheetDto.thickness,
           })
           .then(() => this.$router.push('/'))
           .catch(error => console.log(error));
