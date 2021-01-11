@@ -85,8 +85,9 @@ export default {
         .get('https://localhost:5002/api/stock')
         .then(response => {
               this.stocks = response.data;
-              this.sortOrder = true;
-              this.headerClicked('Needed Stock');
+              this.sortKey = 'Needed Stock';
+              this.sortOrder = false;
+              this.sortData();
             }
         );
   }
