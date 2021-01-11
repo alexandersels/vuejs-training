@@ -82,7 +82,7 @@ export default {
   },
   mounted() {
     axios
-        .get('https://localhost:5002/api/analytics')
+        .get('https://localhost:5002/api/stock')
         .then(response => this.stocks = response.data);
   }
 }
