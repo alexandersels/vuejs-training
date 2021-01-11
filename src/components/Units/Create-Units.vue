@@ -28,7 +28,7 @@
       </div>
       <div class="row" v-for="unitsheet in formData.unitSheets" v-bind:key="unitsheet.id">
         <select v-model="unitsheet.sheetId" class="form__field" required>
-          <option v-for="sheet in sheets" v-bind:key="sheet.id" v-bind:value="sheet.value">
+          <option v-for="sheet in sheets" v-bind:key="sheet.id" v-bind:value="sheet.id">
             {{ sheet.value }}
           </option>
         </select>
