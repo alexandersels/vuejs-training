@@ -10,10 +10,18 @@
                placeholder="Product Number">
       </div>
       <div class="row">
-        <input v-model=formData.type name="type" class="form__field" required placeholder="Unit Type">
+        <select v-model=formData.type name="line" class="form__field" required>
+          <option v-for="type in types" v-bind:key="type.value" v-bind:value="type.value">
+            {{ type.text }}
+          </option>
+        </select>
       </div>
       <div class="row">
-        <input v-model=formData.line name="line" class="form__field" required placeholder="Line">
+        <select v-model=formData.line name="line" class="form__field" required>
+          <option v-for="line in lines" v-bind:key="line.value" v-bind:value="line.value">
+            {{ line.text }}
+          </option>
+        </select>
       </div>
       <div class="row">
         <input v-model=formData.image name="image" class="form__field" required placeholder="Link to image">
@@ -35,6 +43,24 @@ export default {
   components: {PrimaryButton, PageTitle},
   data() {
     return {
+      lines: [
+        {text: 'R1', value: 'R1'},
+        {text: 'R2', value: 'R2'},
+        {text: 'R3', value: 'R3'},
+        {text: 'R4', value: 'R4'},
+        {text: 'R5', value: 'R5'},
+        {text: 'H1', value: 'H1'},
+        {text: 'H2', value: 'H2'},
+        {text: 'H3', value: 'H3'},
+      ],
+      types: [
+        {text: 'VRV3', value: 'VRV3'},
+        {text: 'Floor Heater', value: 'FloorHeater'},
+        {text: 'Chiller', value: 'Chiller'},
+        {text: 'Indoor Small', value: 'IndoorSmall'},
+        {text: 'Indoor Medium', value: 'IndoorMedium'},
+        {text: 'Heat Pump', value: 'HeatPump'},
+      ],
       sheets: [],
       formData: {
         name: undefined,
