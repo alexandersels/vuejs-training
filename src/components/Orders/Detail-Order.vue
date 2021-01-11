@@ -12,6 +12,20 @@
         <label>{{ order.sequenceNumber }}</label>
       </div>
     </section>
+    <section>
+      <span>Unitr Information</span>
+      <div class="row clickable" v-for="orderUnit in order.orderUnit" @click="routeToUnit(orderUnit.unitId)"
+           v-bind:key="orderUnit.unitId">
+        <div class="row">
+          <label>Name: </label>
+          <label>{{ orderUnit.name }}</label>
+        </div>
+        <div class="row">
+          <label>Amount: </label>
+          <label>{{ orderUnit.amount }}</label>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -27,7 +41,11 @@ export default {
       order: undefined,
     }
   },
-  methods: {},
+  methods: {
+    routeToUnit(id) {
+      this.$router.push(`/units/${id}`);
+    }
+  },
   mounted() {
     const orderId = this.$route.params.id;
     axios
@@ -36,7 +54,14 @@ export default {
         .catch(() => {
           this.order = {
             date: new Date(),
-            sequenceNumber: '123456789'
+            sequenceNumber: '123456789',
+            orderUnit: [
+              {
+                unitId: '1',
+                amount: 3,
+                name: 'Unit Test',
+              }
+            ]
           }
         })
   }
@@ -68,5 +93,14 @@ section span {
 .row label:first-child {
   padding: 0 1rem;
   font-weight: 600;
+}
+
+.clickable {
+  cursor: pointer !important;
+}
+
+.clickable label {
+  cursor: pointer !important;
+  display: block;
 }
 </style>
