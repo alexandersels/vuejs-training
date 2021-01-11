@@ -51,7 +51,7 @@ export default {
       console.log(createOrderDto)
       axios
           .post('https://localhost:5002/api/orders/', createOrderDto)
-          .then(() => this.$router.push('/'))
+          .then(() => this.$router.push('/orders'))
           .catch(error => console.log(error));
     },
     onAddUnitClicked() {

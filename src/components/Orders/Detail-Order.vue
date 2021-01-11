@@ -49,7 +49,7 @@ export default {
   mounted() {
     const orderId = this.$route.params.id;
     axios
-        .get(`https://localhost:5001/api/orders/${orderId}`)
+        .get(`https://localhost:5002/api/orders/${orderId}`)
         .then(response => this.order = response.data)
         .catch(() => {
           this.order = {
