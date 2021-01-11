@@ -93,7 +93,7 @@ export default {
       this.$router.push(`/sheets/${id}`);
     },
     onCreateClicked() {
-      this.$router.push('/orders/create');
+      this.$router.push('/sheets/create');
     }
   },
   mounted() {
