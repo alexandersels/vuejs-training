@@ -80,7 +80,7 @@ export default {
             currentStock: +createSheetDto.currentStock,
             maxStock: +createSheetDto.maxStock,
           })
-          .then(() => this.$router.push('/'))
+          .then(() => this.$router.push('/sheets'))
           .catch(error => console.log(error));
     }
   }

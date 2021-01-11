@@ -35,6 +35,7 @@ export default {
   components: {PrimaryButton, PageTitle},
   data() {
     return {
+      sheets: [],
       formData: {
         name: undefined,
         productNumber: undefined,
@@ -52,9 +53,34 @@ export default {
           .post('https://localhost:5002/api/units/', {
             ...createUnitDto
           })
-          .then(() => this.$router.push('/'))
+          .then(() => this.$router.push('/units'))
           .catch(error => console.log(error));
     }
+  },
+  mounted() {
+    axios
+        .get('https://localhost:5002/api/sheets')
+        .then(response => this.sheets = response.data)
+        .catch(() => {
+          this.sheets = [
+            {
+              id: '1',
+              partNumber: '132',
+              name: 'Part One',
+              maxStock: 10,
+              currentStock: 5,
+              location: 'Hanger One',
+            },
+            {
+              id: '2',
+              partNumber: '4561',
+              name: 'Part Two',
+              maxStock: 20,
+              currentStock: 4,
+              location: 'Hanger Two',
+            }
+          ];
+        })
   }
 }
 </script>
