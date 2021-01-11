@@ -16,9 +16,9 @@
         </thead>
         <tbody>
         <tr v-for="stock in stocks" :key="stock.id" @click="onRowSelected(stock.id)">
-          <td>{{ entry.sheetName }}</td>
-          <td>{{ entry.currentStock }}</td>
-          <td>{{ entry.neededStock }}</td>
+          <td>{{ stock.sheetName }}</td>
+          <td>{{ stock.currentStock }}</td>
+          <td>{{ stock.neededStock }}</td>
         </tr>
         </tbody>
       </table>
