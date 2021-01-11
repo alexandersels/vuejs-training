@@ -3,7 +3,7 @@
     <PageTitle title="Create a new Order"></PageTitle>
     <form class="form">
       <div class="row">
-        <input v-model=formData.sequenceNumber name="sequenceNumber" type="number" class="form__field" required
+        <input v-model.number=formData.sequenceNumber name="sequenceNumber" type="number" class="form__field" required
                placeholder="Sequence Number">
       </div>
       <div class="row" v-for="orderUnit in formData.orderUnits" v-bind:key="orderUnit.id">
@@ -12,7 +12,8 @@
             {{ unit.value }}
           </option>
         </select>
-        <input v-model.number="orderUnit.amount" class="form__field margin-left-10" required placeholder="Amount of units"
+        <input v-model.number="orderUnit.amount" class="form__field margin-left-10" required
+               placeholder="Amount of units"
                type="number">
         <button class="remove margin-left-10" @click="removeUnitClicked(orderUnit)">Remove</button>
       </div>
