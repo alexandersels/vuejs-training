@@ -35,8 +35,8 @@ export default {
   components: {PageTitle},
   data() {
     return {
-      sortKey: '',
-      sortOrder: false, // false == desc
+      sortKey: 'Needed Stock',
+      sortOrder: true, // false == desc
       columns: ['Name', 'Current Stock', 'Needed Stock'],
       stocks: [],
     }
