@@ -74,9 +74,9 @@ export default {
     findSortValue(user) {
       switch (this.sortKey) {
         case "Firstname":
-          return user.firstname;
+          return user.firstName;
         case "Lastname":
-          return user.lastname;
+          return user.lastName;
         case "Personal Number":
           return user.personalNumber;
         case "Line":
