@@ -13,12 +13,12 @@
       </div>
     </section>
     <section>
-      <span>Unitr Information</span>
+      <span>Unit Information</span>
       <div class="row clickable" v-for="orderUnit in order.orderUnit" @click="routeToUnit(orderUnit.unitId)"
            v-bind:key="orderUnit.unitId">
         <div class="row">
           <label>Name: </label>
-          <label>{{ orderUnit.name }}</label>
+          <label>{{ orderUnit.unitName }}</label>
         </div>
         <div class="row">
           <label>Amount: </label>
@@ -59,7 +59,7 @@ export default {
               {
                 unitId: '1',
                 amount: 3,
-                name: 'Unit Test',
+                unitName: 'Unit Test',
               }
             ]
           }
