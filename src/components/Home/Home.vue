@@ -35,8 +35,8 @@ export default {
   components: {PageTitle},
   data() {
     return {
-      sortKey: 'Needed Stock',
-      sortOrder: true, // false == desc
+      sortKey: '',
+      sortOrder: false, // false == desc
       columns: ['Name', 'Current Stock', 'Needed Stock'],
       stocks: [],
     }
@@ -83,7 +83,11 @@ export default {
   mounted() {
     axios
         .get('https://localhost:5002/api/stock')
-        .then(response => this.stocks = response.data);
+        .then(response => {
+              this.stocks = response.data;
+              this.headerClicked('Needed Stock');
+            }
+        );
   }
 }
 </script>
