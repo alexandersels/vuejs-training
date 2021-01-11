@@ -27,6 +27,20 @@
         <label>{{ unit.line }}</label>
       </div>
     </section>
+    <section>
+      <span>Sheet Information</span>
+      <div class="row clickable" v-for="unitSheet in unit.sheets" @click="routeToSheet(unitSheet.id)"
+           v-bind:key="unitSheet.id">
+        <div class="row">
+          <label>Part Number: </label>
+          <label>{{ unitSheet.partNumber }}</label>
+        </div>
+        <div class="row">
+          <label>Name: </label>
+          <label>{{ unitSheet.name }}</label>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -42,7 +56,11 @@ export default {
       unit: undefined,
     }
   },
-  methods: {},
+  methods: {
+    routeToSheet(id) {
+      this.$router.push(`/sheets/${id}`);
+    }
+  },
   mounted() {
     const unitId = this.$route.params.id;
     axios
@@ -55,6 +73,18 @@ export default {
             image: 'image',
             type: 'Unit Type',
             line: 'Line',
+            sheets: [
+              {
+                id: '1',
+                name: 'Test Sheet',
+                partNumber: '123456'
+              },
+              {
+                id: '2',
+                name: 'Test Sheet Two',
+                partNumber: '123456'
+              }
+            ]
           }
         })
   }
@@ -86,5 +116,14 @@ section span {
 .row label:first-child {
   padding: 0 1rem;
   font-weight: 600;
+}
+
+.clickable {
+  cursor: pointer !important;
+}
+
+.clickable label {
+  cursor: pointer !important;
+  display: block;
 }
 </style>
