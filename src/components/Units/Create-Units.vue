@@ -26,6 +26,19 @@
       <div class="row">
         <input v-model=formData.image name="image" class="form__field" required placeholder="Link to image">
       </div>
+      <div class="row" v-for="unitsheet in formData.unitSheets" v-bind:key="unitsheet.id">
+        <select v-model="unitsheet.sheetId" class="form__field" required>
+          <option v-for="sheet in sheets" v-bind:key="sheet.id" v-bind:value="sheet.value">
+            {{ sheet.value }}
+          </option>
+        </select>
+        <input v-model="unitsheet.amount" class="form__field margin-left-10" required placeholder="Amount of sheet"
+               type="number">
+        <button class="remove margin-left-10" @click="removeUnitSheet(unitsheet)">Remove</button>
+      </div>
+      <div class="row align-right">
+        <button @click="onAddSheetClicked()">Add a sheet</button>
+      </div>
     </form>
     <div class="row">
       <PrimaryButton text="Create" :clicked=onRegisterClicked></PrimaryButton>
@@ -62,12 +75,14 @@ export default {
         {text: 'Heat Pump', value: 'HeatPump'},
       ],
       sheets: [],
+      test: [],
       formData: {
         name: undefined,
         productNumber: undefined,
         type: undefined,
         line: undefined,
         image: undefined,
+        unitSheets: [],
       }
     }
   },
@@ -81,29 +96,37 @@ export default {
           })
           .then(() => this.$router.push('/units'))
           .catch(error => console.log(error));
+    },
+    onAddSheetClicked() {
+      this.formData.unitSheets.push({
+        amount: undefined,
+        sheetId: undefined,
+      })
+    },
+    removeUnitSheet(unitSheet) {
+      this.formData.unitSheets = this.formData.unitSheets.filter(entry => entry !== unitSheet);
     }
   },
   mounted() {
     axios
         .get('https://localhost:5002/api/sheets')
-        .then(response => this.sheets = response.data)
+        .then(response => {
+          this.sheets = response.data.map(sheet => {
+            return {
+              id: sheet.id,
+              value: sheet.name,
+            }
+          })
+        })
         .catch(() => {
           this.sheets = [
             {
               id: '1',
-              partNumber: '132',
-              name: 'Part One',
-              maxStock: 10,
-              currentStock: 5,
-              location: 'Hanger One',
+              value: 'Part One',
             },
             {
               id: '2',
-              partNumber: '4561',
-              name: 'Part Two',
-              maxStock: 20,
-              currentStock: 4,
-              location: 'Hanger Two',
+              value: 'Part Two',
             }
           ];
         })
@@ -146,9 +169,42 @@ export default {
   transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
+.align-right {
+  justify-content: flex-end;
+}
+
 .form__field:focus,
 .form__field:active {
   border-color: #007bff !important;
   box-shadow: 0 0 5px #007bff;
+}
+
+button {
+  cursor: pointer;
+  display: inline-block;
+  padding: 1rem 5rem;
+  margin: 1rem 0;
+
+  font-size: 1.6rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+
+  border: 3px solid #007bff;
+  background-color: #007bff;
+  color: #fff;
+  outline: none;
+  text-decoration: none;
+
+  transition: all 0.5s ease;
+}
+
+.remove {
+  font-size: 1.6rem;
+  background-color: red;
+  border: none;
+}
+
+.margin-left-10 {
+  margin-left: 1rem;
 }
 </style>
