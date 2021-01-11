@@ -7,6 +7,9 @@
       <div class="header__content">
         <div class="header__links">
           <div class="header__link">
+            <router-link to="/">Home</router-link>
+          </div>
+          <div class="header__link">
             <router-link to="/sheets">Sheets</router-link>
           </div>
           <div class="header__link">
