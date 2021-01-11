@@ -32,7 +32,7 @@
             {{ sheet.value }}
           </option>
         </select>
-        <input v-model="unitsheet.amount" class="form__field margin-left-10" required placeholder="Amount of sheet"
+        <input v-model.number="unitsheet.amount" class="form__field margin-left-10" required placeholder="Amount of sheet"
                type="number">
         <button class="remove margin-left-10" @click="removeUnitSheet(unitsheet)">Remove</button>
       </div>
