@@ -32,7 +32,8 @@
             {{ sheet.value }}
           </option>
         </select>
-        <input v-model.number="unitsheet.amount" class="form__field margin-left-10" required placeholder="Amount of sheet"
+        <input v-model.number="unitsheet.amount" class="form__field margin-left-10" required
+               placeholder="Amount of sheet"
                type="number">
         <button class="remove margin-left-10" @click="removeUnitSheet(unitsheet)">Remove</button>
       </div>
@@ -91,9 +92,7 @@ export default {
       const createUnitDto = JSON.parse(JSON.stringify(this.formData));
       console.log(createUnitDto);
       axios
-          .post('https://localhost:5002/api/units/', {
-            ...createUnitDto
-          })
+          .post('https://localhost:5002/api/units/', createUnitDto)
           .then(() => this.$router.push('/units'))
           .catch(error => console.log(error));
     },

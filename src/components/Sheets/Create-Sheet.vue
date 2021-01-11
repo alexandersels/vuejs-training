@@ -10,15 +10,15 @@
                placeholder="Part Number">
       </div>
       <div class="row">
-        <input v-model=formData.length type="number" name="length" class="form__field" required
+        <input v-model.number=formData.length type="number" name="length" class="form__field" required
                placeholder="Length">
       </div>
       <div class="row">
-        <input v-model=formData.width type="number" name="width" class="form__field" required
+        <input v-model.number=formData.width type="number" name="width" class="form__field" required
                placeholder="Width">
       </div>
       <div class="row">
-        <input v-model=formData.thickness type="number" name="thickness" class="form__field" required
+        <input v-model.number=formData.thickness type="number" name="thickness" class="form__field" required
                placeholder="Thickness">
       </div>
       <div class="row">
@@ -26,11 +26,11 @@
                placeholder="Image">
       </div>
       <div class="row">
-        <input v-model=formData.maxStock type="number" name="maxStock" class="form__field" required
+        <input v-model.number=formData.maxStock type="number" name="maxStock" class="form__field" required
                placeholder="Max Stock">
       </div>
       <div class="row">
-        <input v-model=formData.currentStock type="number" name="currentStock" class="form__field" required
+        <input v-model.number=formData.currentStock type="number" name="currentStock" class="form__field" required
                placeholder="Current Stock">
       </div>
       <div class="row">
@@ -70,16 +70,8 @@ export default {
   methods: {
     onRegisterClicked() {
       const createSheetDto = JSON.parse(JSON.stringify(this.formData));
-      console.log(createSheetDto);
       axios
-          .post('https://localhost:5002/api/sheets/', {
-            ...createSheetDto,
-            length: +createSheetDto.length,
-            width: +createSheetDto.width,
-            thickness: +createSheetDto.thickness,
-            currentStock: +createSheetDto.currentStock,
-            maxStock: +createSheetDto.maxStock,
-          })
+          .post('https://localhost:5002/api/sheets/', createSheetDto)
           .then(() => this.$router.push('/sheets'))
           .catch(error => console.log(error));
     }
