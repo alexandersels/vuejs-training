@@ -52,7 +52,7 @@ export default {
       this.sortData();
     },
     sortData() {
-      this.orders = this.orders.slice().sort((a, b) => {
+      this.stocks = this.stocks.slice().sort((a, b) => {
         a = this.findSortValue(a);
         b = this.findSortValue(b);
 
